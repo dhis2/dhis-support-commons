@@ -9,6 +9,13 @@
   <version>1.0</version>
   <packaging>jar</packaging>
   <name>DHIS 2 Support Commons</name>
+  
+  <description>General common utilities for Java development</description>
+
+  <organization>
+    <name>UiO</name>
+    <url>http://www.dhis2.org</url>
+  </organization>
 
   <licenses>
     <license>
@@ -17,6 +24,17 @@
     </license>
   </licenses>
   
+  <scm>
+    <connection>scm:git:git@github.com:dhis2/dhis2-support-commons.git</connection>
+    <developerConnection>scm:git:git@github.com:dhis2/dhis2-support-commons.git</developerConnection>
+    <url>git@github.com:dhis2/dhis2-support-commons.git</url>
+  </scm>
+  
+  <issueManagement>
+	<system>GitHub</system>
+	<url>https://github.com/dhis2/dhis2-support-commons/issues</url>
+  </issueManagement>
+
   <build>
     <plugins>
       <plugin>

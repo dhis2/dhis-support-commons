@@ -10,7 +10,7 @@
   <packaging>jar</packaging>
   <name>DHIS 2 Support Commons</name>
   
-  <description>General common utilities for Java development</description>
+  <description>Common utilities for Java development</description>
 
   <organization>
     <name>UiO</name>

@@ -31,8 +31,8 @@
   </scm>
   
   <issueManagement>
-	<system>GitHub</system>
-	<url>https://github.com/dhis2/dhis2-support-commons/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/dhis2/dhis2-support-commons/issues</url>
   </issueManagement>
 
   <build>

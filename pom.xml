@@ -4,87 +4,48 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>dhis2-support-commons</artifactId>
-  <groupId>org.hisp.dhis</groupId>
-  <version>1.0</version>
+  <parent>
+    <artifactId>dhis-support</artifactId>
+    <groupId>org.hisp.dhis</groupId>
+    <version>2.20-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>dhis-support-commons</artifactId>
   <packaging>jar</packaging>
-  <name>DHIS 2 Support Commons</name>
-  
-  <description>Common utilities for Java development</description>
+  <name>DHIS Support Commons</name>
 
-  <organization>
-    <name>UiO</name>
-    <url>http://www.dhis2.org</url>
-  </organization>
+  <!--
+    DHIS Support Commons is intended to be a lightweight library with very few and
+    no heavy dependencies, as well as no internal dependencies (DHIS modules).
+    This includes not depending on the dhis-support-test package, meaning any unit
+    tests must be added to an external package (dhis-support-system is a reasonable
+    choice). Please be wary of this when adding new dependencies.
+  -->
 
-  <licenses>
-    <license>
-      <name>BSD</name>
-      <url>http://opensource.org/licenses/BSD-2-Clause</url>
-    </license>
-  </licenses>
-  
-  <scm>
-    <connection>scm:git:git@github.com:dhis2/dhis2-support-commons.git</connection>
-    <developerConnection>scm:git:git@github.com:dhis2/dhis2-support-commons.git</developerConnection>
-    <url>git@github.com:dhis2/dhis2-support-commons.git</url>
-  </scm>
-  
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/dhis2/dhis2-support-commons/issues</url>
-  </issueManagement>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  
   <dependencies>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.4</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
-      <version>1.2</version>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>avalon-framework</groupId>
-          <artifactId>avalon-framework</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>logkit</groupId>
-          <artifactId>logkit</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.10</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-jexl</artifactId>
-      <version>2.1.1</version>
     </dependency>
     <dependency>
       <groupId>org.scijava</groupId>
       <artifactId>jep</artifactId>
-      <version>2.4.2</version>
     </dependency>
   </dependencies>
-  
+
+  <properties>
+    <rootDir>../../</rootDir>
+  </properties>
 </project>

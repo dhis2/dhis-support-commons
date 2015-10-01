@@ -20,3 +20,6 @@ This library is published to the central Maven repository and can be used in you
 </dependency>
 ```
 
+## Downloads
+
+You can find downloads on the <a href="https://github.com/dhis2/dhis2-support-commons/releases">release page</a>.

@@ -1,6 +1,6 @@
 # DHIS 2 Support Commons
 
-The DHIS 2 Support Commons is a Java utility library.
+DHIS 2 Support Commons is a Java utility library.
 
 # Documentation
 

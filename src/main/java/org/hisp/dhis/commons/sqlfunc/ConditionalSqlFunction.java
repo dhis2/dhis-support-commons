@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.functional;
+package org.hisp.dhis.commons.sqlfunc;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -29,11 +29,29 @@ package org.hisp.dhis.commons.functional;
  */
 
 /**
- * Function with four parameters.
- *
- * @author Morten Olav Hansen <mortenoh@gmail.com>
+ * Function which evaluates conditional statements.
+ * 
+ * @author Lars Helge Overland
  */
-public interface Function4<A1, A2, A3, A4>
+public class ConditionalSqlFunction
+    implements SqlFunction
 {
-    void apply( A1 arg1, A2 arg2, A3 arg3, A4 arg4 );
+    public static final String KEY = "condition";
+
+    @Override
+    public String evaluate( String... args )
+    {
+        if ( args == null || args.length != 3 )
+        {
+            throw new IllegalArgumentException( "Illegal arguments, expected 3 arguments: condition, true-value, false-value" );
+        }
+        
+        String condition = args[0];
+        String trueValue = args[1];
+        String falseValue = args[2];
+        
+        String conditional = condition.replaceAll( "^\"|^'|\"$|'$", "" );
+        
+        return "case when (" + conditional + ") then " + trueValue + " else " + falseValue + " end";
+    }
 }

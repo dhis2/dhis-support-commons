@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.functional;
+package org.hisp.dhis.commons.sqlfunc;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -28,12 +28,34 @@ package org.hisp.dhis.commons.functional;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import org.hisp.dhis.commons.util.TextUtils;
+
 /**
- * Function with 0 parameters.
+ * Function which returns the number of zero or positive values among the given
+ * arguments, or null if there are zero occurrences.
  * 
- * @author Morten Olav Hansen <mortenoh@gmail.com>
+ * @author Lars Helge Overland
  */
-public interface Function0
+public class ZeroPositiveValueCountFunction
+    implements SqlFunction
 {
-    void apply();
+    public static final String KEY = "zpvc";
+    
+    @Override
+    public String evaluate( String... args )
+    {
+        if ( args == null || args.length == 0 )
+        {
+            throw new IllegalArgumentException( "Illegal arguments, expected at least one argument" );
+        }
+        
+        String sql = "nullif(cast((";
+        
+        for ( String value : args )
+        {
+            sql += "case when " + value + " >= 0 then 1 else 0 end + ";
+        }
+        
+        return TextUtils.removeLast( sql, "+" ).trim() + ") as double precision),0)";
+    }
 }

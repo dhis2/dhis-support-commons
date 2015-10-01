@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.filter;
+package org.hisp.dhis.commons.util;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -28,18 +28,43 @@ package org.hisp.dhis.commons.filter;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import static org.hisp.dhis.commons.util.DebugUtils.SEPARATOR;
+import static org.hisp.dhis.commons.util.DebugUtils.logDuplicates;
+import static org.hisp.dhis.commons.util.DebugUtils.resetDuplicates;
+import junit.framework.TestCase;
+
 /**
- * Filter interface.
- * 
  * @author Lars Helge Overland
+ * @version $Id$
  */
-public interface Filter<T>
+public class DebugUtilsTest
+    extends TestCase
 {
-    /**
-     * Indicates whether the given object to should be retained in the list.
-     * 
-     * @param object the object.
-     * @return true if object should be retained.
-     */
-    boolean retain( T object );
+    public void testLogDuplicate()
+    {
+        String keyA = "name";
+        String keyB = "code";
+        String keyC = "identifier";
+        
+        assertNull( logDuplicates( keyA, "john" ) );
+        assertNull( logDuplicates( keyA, "tom" ) );
+        assertNull( logDuplicates( keyA, "george" ) );
+        assertEquals( "tom", logDuplicates( keyA, "tom" ) );
+        assertNull( logDuplicates( keyA, "will" ) );
+        assertEquals( "john", logDuplicates( keyA, "john" ) );
+                
+        assertNull( logDuplicates( keyB, "john" ) );
+        assertNull( logDuplicates( keyB, "A2", "A3" ) );
+        assertNull( logDuplicates( keyB, "B1" ) );
+        assertEquals( "A2" + SEPARATOR + "A3", logDuplicates( keyB, "A2", "A3" ) );
+        assertEquals( "A2" + SEPARATOR + "A3", logDuplicates( keyB, "A2", "A3" ) );
+        assertNull( logDuplicates( keyB, "C1" ) );
+        
+        assertNull( logDuplicates( keyC, 1, 2, 3 ) );
+        assertNull( logDuplicates( keyC, 1, 2, 4 ) );
+        assertEquals( 1 + SEPARATOR + 2 + SEPARATOR + 3, logDuplicates( keyC, 1, 2, 3 ) );        
+        
+        assertTrue( resetDuplicates( keyA ) );
+        assertNull( logDuplicates( keyA, "tom" ) );
+    }
 }

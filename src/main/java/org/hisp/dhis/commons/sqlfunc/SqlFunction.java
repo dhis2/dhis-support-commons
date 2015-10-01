@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.functional;
+package org.hisp.dhis.commons.sqlfunc;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -29,11 +29,16 @@ package org.hisp.dhis.commons.functional;
  */
 
 /**
- * Function with three parameters.
- *
- * @author Morten Olav Hansen <mortenoh@gmail.com>
+ * @author Lars Helge Overland
  */
-public interface Function3<A1, A2, A3>
+public interface SqlFunction
 {
-    void apply( A1 arg1, A2 arg2, A3 arg3 );
+    /**
+     * Evaluates the function using the given column name.
+     * 
+     * @param args the arguments.
+     * 
+     * @return the result of the evaluation.
+     */
+    String evaluate( String... args );
 }

@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.functional;
+package org.hisp.dhis.commons.sqlfunc;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -29,11 +29,24 @@ package org.hisp.dhis.commons.functional;
  */
 
 /**
- * Function with five parameters.
- *
- * @author Morten Olav Hansen <mortenoh@gmail.com>
+ * @author Lars Helge Overland
  */
-public interface Function5<A1, A2, A3, A4, A5>
+public class DaysBetweenSqlFunction
+    implements SqlFunction
 {
-    void apply( A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5 );
+    public static final String KEY = "daysBetween";
+    
+    @Override
+    public String evaluate( String... args )
+    {
+        if ( args == null || args.length != 2 )
+        {
+            throw new IllegalArgumentException( "Illegal arguments, expected 2 arguments: start-date, end-date" );
+        }
+        
+        String startDate = args[0];
+        String endDate = args[1];
+        
+        return "(cast(" + endDate + " as date) - cast(" + startDate + " as date))";
+    }
 }

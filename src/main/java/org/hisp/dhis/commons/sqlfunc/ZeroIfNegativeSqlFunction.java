@@ -1,4 +1,4 @@
-package org.hisp.dhis.commons.math;
+package org.hisp.dhis.commons.sqlfunc;
 
 /*
  * Copyright (c) 2004-2015, University of Oslo
@@ -29,24 +29,26 @@ package org.hisp.dhis.commons.math;
  */
 
 /**
- * JEP function which returns 1 if the argument is a zero or positive number, 0
- * otherwise.
+ * Function which evaluates numerical values to zero if negative or null, unchanged 
+ * if zero or positive.
  * 
  * @author Lars Helge Overland
  */
-public class OneIfZeroOrPositiveFunction
-    extends UnaryDoubleFunction
+public class ZeroIfNegativeSqlFunction
+    implements SqlFunction
 {
-    public static final String NAME = "oizp";
-
-    public OneIfZeroOrPositiveFunction()
-    {
-        super();
-    }
-
+    public static final String KEY = "zing";
+    
     @Override
-    public Double eval( double arg )
+    public String evaluate( String... args )
     {
-        return ( arg >= 0 ) ? 1d : 0d;
+        if ( args == null || args.length != 1 )
+        {
+            throw new IllegalArgumentException( "Illegal arguments, expected 1 argument: value" );
+        }
+        
+        String value = args[0];
+        
+        return "coalesce(case when " + value + " < 0 then 0 else " + value + " end, 0)";
     }
 }

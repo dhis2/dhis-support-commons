@@ -51,6 +51,7 @@ public class ListUtils
      * Removes from the given list the elements at the given indexes. Ignores
      * indexes which are out of bounds of list.
      * 
+     * @param <T> type.
      * @param list the list to remove elements from.
      * @param indexes the indexes for the elements to remove.
      */
@@ -78,6 +79,7 @@ public class ListUtils
      * Removes from the given list the elements at the given indexes. Ignores
      * indexes which are out of bounds of list.
      * 
+     * @param <T> type.
      * @param list the list to operate on.
      * @param indexes the list to remove elements from.
      */
@@ -91,8 +93,10 @@ public class ListUtils
     /**
      * Returns a sublist of the given list with the elements at the given indexes.
      * 
+     * @param <T> type.
      * @param list the list to select from.
      * @param indexes the indexes of the elements in the list to select.
+     * @return sublist of the given list with the elements at the given indexes.
      */
     public static <T> List<T> getAtIndexes( List<T> list, List<Integer> indexes )
     {
@@ -110,6 +114,7 @@ public class ListUtils
      * Checks whether the given list contains duplicates. List entries are compared
      * using the given comparator.
      * 
+     * @param <T> type.
      * @param list the list.
      * @param comparator the comparator.
      * @return true if the list contains duplicates, false if not.
@@ -137,11 +142,12 @@ public class ListUtils
      * Returns the duplicates in the given list. List entries are compared
      * using the given comparator.
      * 
+     * @param <T> type.
      * @param list the list.
      * @param comparator the comparator.
      * @return a set of duplicates from the given list.
      */
-    public static <T> Set<T> getDuplicates( List<T> list, Comparator<T> comparator )
+    public static <T> Set<T> getDuplicates( List<T> list, Comparator<? super T> comparator )
     {
         Set<T> duplicates = new HashSet<>();
         
@@ -165,6 +171,7 @@ public class ListUtils
     /**
      * Returns the duplicates in the given list.
      * 
+     * @param <T> type.
      * @param list the list.
      * @return a set of duplicates from the given list.
      */
@@ -209,9 +216,11 @@ public class ListUtils
      * Returns the sub list of the given list avoiding exceptions, starting on 
      * the given start index and returning at maximum the given max number of items. 
      * 
+     * @param <T> type.
      * @param list the list.
      * @param start the start index.
      * @param max the max number of items to return.
+     * @return sublist of the given list with the elements at the given indexes.
      */
     public static <T> List<T> subList( List<T> list, int start, int max )
     {
@@ -228,6 +237,7 @@ public class ListUtils
     /**
      * Unions the given array of lists into a single list.
      * 
+     * @param <T> type.
      * @param lists the array of lists.
      * @return a union of the given lists.
      */
@@ -254,7 +264,7 @@ public class ListUtils
      */
     public static List<Integer> getClosedOpenList( int a, int b )
     {
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         
         for ( int i = a; i < b; i++ )
         {
@@ -265,7 +275,7 @@ public class ListUtils
     }
 
     /**
-     * Converts a List<Double> into a double[].
+     * Converts a List into a double[].
      *
      * @param list the List.
      * @return a double array.
@@ -303,5 +313,20 @@ public class ListUtils
         }
 
         return integers;
+    }
+    
+    /**
+     * Creates a copy of and sorts the given list.
+     * 
+     * @param <T> type.
+     * @param list the list to sort.
+     * @param comparator the comparator to use when sorting.
+     * @return a sorted list.
+     */
+    public static <T> List<T> sort( List<T> list, Comparator<? super T> comparator )
+    {
+        List<T> copy = new ArrayList<>( list );
+        Collections.sort( copy, comparator );
+        return copy;
     }
 }

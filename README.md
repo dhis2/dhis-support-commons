@@ -6,7 +6,7 @@ DHIS 2 Support Commons is a Java utility library.
 
 ## Javadocs
 
-Browse <a href="http://dhis2.github.io/dhis2-support-commons/releases/1.0/apidocs/index.html">Javadocs for the most recent release</a>.
+Browse <a href="http://dhis2.github.io/dhis2-support-commons/releases/1.0/apidocs/index.html"> Javadocs for the most recent release</a>.
 
 ## Maven
 
@@ -22,4 +22,4 @@ This library is published to the central Maven repository and can be used in you
 
 ## Downloads
 
-You can find downloads on the <a href="https://github.com/dhis2/dhis2-support-commons/releases">release page</a>.
+Find downloads on the <a href="https://github.com/dhis2/dhis2-support-commons/releases">release page</a>.

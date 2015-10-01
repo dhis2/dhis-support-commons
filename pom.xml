@@ -12,11 +12,26 @@
   
   <description>General common utilities for Java development</description>
 
+  <url>https://github.com/dhis2/dhis2-support-commons</url>
+
   <organization>
     <name>UiO</name>
     <url>http://www.dhis2.org</url>
   </organization>
 
+  <developers>
+    <developer>
+      <name>Halvdan Hoem Grelland</name>
+      <email>halvdanhg@gmail.com</email>
+      <organization>UiO</organization>
+    </developer>
+    <developer>
+      <name>Lars Helge Oeverland</name>
+      <email>larshelge@gmail.com</email>
+      <organization>UiO</organization>
+    </developer>
+  </developers>
+  
   <licenses>
     <license>
       <name>BSD</name>

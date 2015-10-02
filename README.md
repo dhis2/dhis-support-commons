@@ -10,7 +10,7 @@ Browse <a href="http://dhis2.github.io/dhis2-support-commons/releases/1.0/apidoc
 
 ## Maven
 
-This library is published to the central Maven repository and can be used in your Maven POM file like this:
+This library is published to the <a href="http://mvnrepository.com/artifact/org.hisp.dhis/dhis2-support-commons/1.0">central Maven repository</a> and can be used in your Maven POM file like this:
 
 ```
 <dependency>

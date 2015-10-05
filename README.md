@@ -19,7 +19,3 @@ This library is published to the <a href="http://mvnrepository.com/artifact/org.
   <version>1.1</version>
 </dependency>
 ```
-
-## Downloads
-
-Find downloads on the <a href="https://github.com/dhis2/dhis2-support-commons/releases">release page</a>.

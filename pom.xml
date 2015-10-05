@@ -6,7 +6,7 @@
 
   <artifactId>dhis2-support-commons</artifactId>
   <groupId>org.hisp.dhis</groupId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
   <name>DHIS 2 Support Commons</name>
   

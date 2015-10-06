@@ -19,3 +19,7 @@ This library is published to the <a href="http://mvnrepository.com/artifact/org.
   <version>1.1</version>
 </dependency>
 ```
+
+## Dependencies
+
+The library requires Java 7. It depends on the Apache Commons Lang 3 and Apache JEXL libraries.
